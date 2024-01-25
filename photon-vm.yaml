@@ -45,7 +45,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: docker.io/a496/ova:v1.0
+  imageName: docker.io/a496/ova:latest
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
