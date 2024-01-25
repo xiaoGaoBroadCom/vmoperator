@@ -16,6 +16,24 @@ spec:
     configMapName: user-data-photon
     transport: CloudInit
 ---
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: xiao-vm
+  namespace: test
+  annotations:
+    vmoperator.vmware.com/image-supported-check: disable
+spec:
+  className: guaranteed-small
+  imageName: docker.io/a496/ova:v1.0
+  powerState: poweredOn
+  networkInterfaces:
+  - networkName: "VM Network"
+    ethernetCardType: "vmxnet3"
+  vmMetadata:
+    configMapName: user-data-photon
+    transport: CloudInit
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
