@@ -39,37 +39,38 @@ data:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: xiao-vm
-  namespace: test
+  name: vce-test
+  namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: guaranteed-small
-  imageName: docker.io/a496/ova:latest
+  className: best-effort-ec-small
+  imageName: 192.168.60.199/edge-VC_VMDK-x86_64-5.4.0.0-99130387-R5400-20231230-GA-134893-3c6e4f5c0f-updatable-ext4.ova
   powerState: poweredOn
   networkInterfaces:
+  - networkName: "VM Dummy"
+    ethernetCardType: "vmxnet3"
+  - networkName: "VM Dummy"
+    ethernetCardType: "vmxnet3"
   - networkName: "VM Network"
     ethernetCardType: "vmxnet3"
   vmMetadata:
-    configMapName: user-data-photon
+    configMapName: user-data-vce
     transport: CloudInit
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: user-data-photon
-    namespace: test
+    name: user-data-vce
+    namespace: default
 data:
   user-data: |
     #cloud-config
-    ssh_pwauth: true
-    users:
-      - name: root
-        sudo: ALL=(ALL) NOPASSWD:ALL
-        lock_passwd: false
-        passwd: '$6$rounds=4096$g4hhnNzlgGol6ghX$E.Qu.vzMA.qzufAhwI84THkFSTjGCTognWAiSt8uioMKjKDUF1wPtIAiKaSyIaT/JuunlWk8pDetIgYLT81Nr0'
-        shell: /bin/bash
-    write_files:
-      - content: |
-          Keswick VM service says Hello World
-        path: /helloworld
+    password: passw0rd 
+    chpasswd: { expire: False }
+    ssh_pwauth: True
+    velocloud:
+      vce:
+        vco: vco12-usvi1.velocloud.net
+        activation_code: DGXU-R28P-XZ2L-4C5Z
+        vco_ignore_cert_errors: true
