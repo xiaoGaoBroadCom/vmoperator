@@ -7,7 +7,7 @@ metadata:
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: guaranteed-large
+  className: best-effort-large
   imageName: 10.221.124.13/ws2022.ova
   powerState: poweredOn
   networkInterfaces:
