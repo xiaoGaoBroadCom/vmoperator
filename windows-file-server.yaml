@@ -10,7 +10,6 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: nav-gold-policy
   volumeMode: Filesystem
 ---
 #example deployment and post customsiation for Photon VM
