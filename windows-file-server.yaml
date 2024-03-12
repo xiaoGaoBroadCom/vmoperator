@@ -1,17 +1,4 @@
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: harbor-pvc
-  namespace: default
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  volumeMode: Filesystem
----
 #example deployment and post customsiation for Photon VM
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
@@ -27,10 +14,6 @@ spec:
   networkInterfaces:
   - networkName: "VM Network"
     ethernetCardType: "vmxnet3"
-  volumes:
-  - name: my-centos-vol
-    persistentVolumeClaim:
-      claimName: harbor-pvc
   vmMetadata:
     configMapName: user-data-windows
     transport: CloudInit
