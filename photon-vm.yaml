@@ -8,7 +8,7 @@ spec:
     - ReadWriteOnce 
   resources:
    requests:
-     storage: "1Gi" 
+     storage: "500MB" 
   volumeName: pv1 
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
