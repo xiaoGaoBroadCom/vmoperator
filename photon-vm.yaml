@@ -25,10 +25,6 @@ spec:
   networkInterfaces:
   - networkName: "VM Network"
     ethernetCardType: "vmxnet3"
-  volumes:
-  - name: my-centos-vol
-    persistentVolumeClaim:
-      claimName: pvc1
   vmMetadata:
     configMapName: user-data-vce
     transport: CloudInit
@@ -63,10 +59,14 @@ metadata:
 spec:
   className: guaranteed-small
   imageName: packages.vmware.com/photon/4.0/GA/ova/photon-hw11-4.0-1526e30ba0.ova
-  powerState: poweredOff
+  powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
     ethernetCardType: "vmxnet3"
+  volumes:
+  - name: my-centos-vol
+    persistentVolumeClaim:
+      claimName: pvc1
   vmMetadata:
     configMapName: user-data-photon2
     transport: CloudInit
