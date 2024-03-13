@@ -2,7 +2,7 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: photon-vm
+  name: photon-vm444
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
