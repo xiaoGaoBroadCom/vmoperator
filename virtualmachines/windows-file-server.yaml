@@ -9,7 +9,7 @@ metadata:
 spec:
   className: best-effort-medium
   imageName: 10.221.124.13/win-2012-template.ova
-  powerState: poweredOn
+  powerState: poweredOff
   vmMetadata:
     secretName: sysprep-bootstrap-data
     transport: Sysprep
