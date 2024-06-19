@@ -22,7 +22,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: vrops-cadvisor
-        image: google/cadvisor:v0.47.2
+        image: google/cadvisor:latest
         resources:
           requests:
             memory: 250Mi
